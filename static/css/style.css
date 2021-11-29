@@ -1,0 +1,86 @@
+#all{
+    display: flex;
+    justify-content: space-evenly;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#table td{
+    border:1px solid black;
+    text-align:center;
+}
+#form div{
+    display: flex;
+}
+#form div label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid black;
+    text-align: center;
+    padding: 3px;
+    width:150px;
+    height: 40px;
+    margin:1px 0;
+    font-size: 20px;
+    color:blue;
+
+}
+.a{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid black;
+    width: 50px;
+    margin: 1px;
+
+}
+h3{
+    text-decoration: underline;
+    color:gray;
+    margin-left:20px
+
+}
+table{
+    width: 800px;
+}
+.menu{
+    width: 25px;
+    height: 25px;
+}
+#btnAdd{
+    padding: 5px;
+    margin-top:10px;
+    border-radius:10px;
+    letter-spacing: 1px;
+    border-color: blue;
+    font-weight: bold;
+    color:blue;
+
+}
+.head{
+    color:blue;
+    font-size: 20px;
+}
+td{
+    padding: 10px;
+}
+.del,.con,.edit,.cancel{
+    padding: 3px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+.del{
+    color:red;
+    border-color: red;
+}
+.con{
+    color:deeppink;
+    border-color: deeppink;
+}
+.edit,.cancel,select{
+    color:blue;
+    border-color: blue;
+}
+select{
+    border:2px solid blue;
+}

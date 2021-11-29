@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/js.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>03: zapis / odczyta danych w bazie NEDB - edit/update</h1>
+    <div id="all">
+        <div id="form">
+            <h3>Dane pojazdu</h3>
+            <form method="get" action="/add">
+                <div>
+                    <label>ubezpieczony:</label>
+                    <div class="a">
+                        <input type="checkbox" name="ubezp" class="menu">
+                    </div>
+                </div>
+                <div>
+                    <label>benzyna:</label>
+                    <div class="a">
+                        <input type="checkbox" name="benz" class="menu">
+                    </div>
+                </div>
+                <div>
+                    <label>uszkodzony:</label>
+                    <div class="a">
+                        <input type="checkbox" name="uszk" class="menu">
+                    </div>
+                </div>
+                <div>
+                    <label>napęd 4x4:</label>
+                    <div class="a">
+                        <input type="checkbox" name="nap" class="menu">
+                    </div>
+                </div>
+                <button id="btnAdd" type="submit">DODAJ DO BAZY</button>
+            </form>
+        </div>
+
+        <div id="table">
+            {{#if sel}}
+            <h3>Wszystkie pojazdy - edycja</h3>
+            {{else}}
+            <h3>Wszystkie pojazdy</h3>
+            {{/if}}
+            <table>
+                <thead>
+                    <tr class="head">
+                        <td class="head"></td>
+                        <td class="head">ubezpieczony</td>
+                        <td class="head">benzyna</td>
+                        <td class="head">uszkodzony</td>
+                        <td class="head">napęd 4x4</td>
+                        <td class="head"></td>
+                        <td class="head"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each context}}
+                    {{#if sel}}
+                    <form class="a">
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td class="ub"><select name="ub">
+                                    <option value='TAK'>TAK</option>
+                                    <option value='NIE'>NIE</option>
+                                    <option value='BRAK'>BRAK</option>
+                                </select></td>
+                            <td><select name="be">
+                                    <option value='TAK'>TAK</option>
+                                    <option value='NIE'>NIE</option>
+                                    <option value='BRAK'>BRAK</option>
+                                </select></td>
+                            </td>
+                            <td>
+                                <select name="us">
+                                    <option value='TAK'>TAK</option>
+                                    <option value='NIE'>NIE</option>
+                                    <option value='BRAK'>BRAK</option>
+                                </select>
+                            </td>
+                            </td>
+                            <td><select name="na">
+                                    <option value='TAK'>TAK</option>
+                                    <option value='NIE'>NIE</option>
+                                    <option value='BRAK'>BRAK</option>
+                                </select></td>
+                            </td>
+                            <td style="display:none;"> <input type="hidden" class="i" value={{_id}} name="id"></td>
+                            <td>
+                                <button formaction="/confirm" class="con">Confirm</button>
+                            </td>
+                            <td>
+                                <button formaction="/" class="cancel">Cancel</button>
+                            </td>
+                        </tr>
+                    </form>
+                    {{else}}
+
+                    <form class="b">
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td class="ub">{{ubezpieczony}}</td>
+                            <td class="be">{{benzyna}}</td>
+                            <td class="us">{{uszkodzony}}</td>
+                            <td class="nap">{{naped}}</td>
+                            <td>
+                                <input type="hidden" value={{_id}} name="id">
+                                <input type="hidden" name="check" id={{_id}}>
+                                <button formaction="/delete" onclick="rusure('{{_id}}')" class="del">Delete</button>
+                            </td>
+                            <td>
+                                <button formaction="/edit" class="edit">edit</button>
+                            </td>
+                        </tr>
+                    </form>
+
+                    {{/if}}
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function rusure(id) {
+            confirm("Czy usunąć?") ? document.getElementById(id).value = "d" : document.getElementById(id).value = "s";
+        }
+    </script>
+</body>
+
+</html>
